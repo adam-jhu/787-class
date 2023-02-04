@@ -63,15 +63,15 @@ p:hover {
 
 }
 
-#menu-title-1 {
+.menu-title-1 {
     background-color: lightseagreen;
 }
 
-#menu-title-2 {
+.menu-title-2 {
     background-color: lightcoral;
 }
 
-#menu-title-3 {
+.menu-title-3 {
     background-color: lightyellow;
 }
 
@@ -100,12 +100,12 @@ title {
 
 
 
-lg-md-display {
+.lg-md-display {
     display: block;
 }
 
-sm-display {
-    display: hidden;
+.sm-display {
+    display: none;
 }
 
   /********** Large devices only = DESKTOP **********/
@@ -164,9 +164,11 @@ sm-display {
 /********** Medium devices only = TABLET **********/
 @media (min-width: 768px) and (max-width: 991px) {
 
-    .sm-title {
+    /* .sm-title {
         display: none;
-    }
+    } */
+
+
 
     .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
         float: left;
@@ -217,9 +219,31 @@ sm-display {
 /********** Small devices only = MOBILE **********/
 @media (max-width: 767px) {
 
-    .lg-md-title {
+    /* .lg-md-title {
+        display: none;
+    } */
+
+    .lg-md-display {
         display: none;
     }
+
+    .sm-display {
+        display: block;
+    }
+
+    section {
+        padding-top: 0px;
+    } 
+
+    title {
+        width: 100%;
+        overflow-wrap: break-word;
+        /* float: right; */
+        float: none;
+        margin-bottom: auto;
+        position:relative;
+    }
+
 
     .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12 {
         float: left;
