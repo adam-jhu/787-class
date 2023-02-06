@@ -99,7 +99,7 @@ title {
 
 
 
-
+/* style to indicate if an element should be displayed in a particular view size */
 .lg-md-display {
     display: block;
 }
@@ -133,7 +133,7 @@ title {
         width: 25%;
       }
       .col-lg-4 {
-        width: 31%;
+        width: 31%; /* lowered by 1% (each side) to give space for 1% margin*/
       }
       .col-lg-5 {
         width: 41.66%;
@@ -194,7 +194,7 @@ title {
         width: 41.66%;
       }
       .col-md-6 {
-        width: 48%;
+        width: 48%; /* lowered by 1% (each side) to give space for 1% margin*/
       }
       .col-md-7 {
         width: 58.33%;
@@ -212,7 +212,7 @@ title {
         width: 91.66%;
       }
       .col-md-12 {
-        width: 98%;
+        width: 98%; /* lowered by 1% (each side) to give space for 1% margin*/
       }
 }
 
@@ -294,6 +294,6 @@ title {
         width: 91.66%;
       }
       .col-sm-12 {
-        width: 98%;
+        width: 98%; /* lowered by 1% (each side) to give space for 1% margin*/
       }
 }
