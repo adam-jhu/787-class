@@ -52,7 +52,7 @@ section {
     border: 1px solid black;
     float: left;
     padding-top: 25px;
-    
+    padding-bottom: 10px;
     overflow: hidden;
    
 }
