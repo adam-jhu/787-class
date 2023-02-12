@@ -1,7 +1,8 @@
 
-#collapsable-nav {
+#collapsable-nav li {
     /* width:100%; */
     background-color:lightyellow;
+    border: 1px solid lightgray
 }
 
 
@@ -18,6 +19,11 @@
     /*width: 100%;*/
     color: black;
     /*background-color: lightyellow;*/
+  }
+
+  #nav-list li {
+    /*background-color:lightgreen;*/
+   /*border: 1px solid black; */
   }
 
   div.menu-section {
