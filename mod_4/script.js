@@ -65,7 +65,7 @@ WARNING!!! WARNING!!!
   }
 
 
-  //=====PART 2: use a map function to create greetings
+  //=====PART 2: use a map function to create greetings===========
   //function to be used by map method, to determine which greeing to use and return as a string with the name
   var simpleMapFunc = function (name) {
     var firstLetter = name.charAt(0).toLowerCase();
@@ -76,6 +76,7 @@ WARNING!!! WARNING!!!
     }
   }
 
+  //call to map function
   var greetedNames = names.map(simpleMapFunc);
 
   //debug
@@ -87,7 +88,7 @@ WARNING!!! WARNING!!!
 
 
 
-  //=====PART 3: Bonus using reduce
+  //=====PART 3: Bonus using reduce============
   console.log("\n\n======Part 3 BONUS");
   var initialValue = {hello: [], bye: []};
   names.reduce( 
