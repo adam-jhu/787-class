@@ -22,6 +22,7 @@ var menuItemsUrl =
   "https://coursera-jhu-default-rtdb.firebaseio.com/menu_items/";
 var menuItemsTitleHtml = "snippets/menu-items-title.html";
 var menuItemHtml = "snippets/menu-item.html";
+var aboutHtmlUrl = "snippets/about.html";
 
 // Convenience function for inserting innerHTML for 'select'
 var insertHtml = function (selector, html) {
@@ -118,7 +119,7 @@ function buildAndShowHomeHTML (categories) {
       //
       var homeHtmlToInsertIntoMainPage = insertProperty(homeHtml, "randomCategoryShortName", "'" + chosenCategoryShortName + "'")
 
-      console.log("homHTMLto insert into main: " + homeHtmlToInsertIntoMainPage );
+      //console.log("homHTMLto insert into main: " + homeHtmlToInsertIntoMainPage );
 
       // TODO: STEP 4: Insert the produced HTML in STEP 3 into the main page
       // Use the existing insertHtml function for that purpose. Look through this code for an example
@@ -140,6 +141,17 @@ function chooseRandomCategory (categories) {
 }
 
 
+// get a random rating between 1-5 inclusive
+// adapted from example at: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+function getRandomRating () {
+  // Choose a random from 1- 5
+  var rating = Math.floor(Math.random() * 5 + 1);
+  console.log ("random rating number: " + rating);
+  
+  return rating;
+}
+
+
 // Load the menu categories view
 dc.loadMenuCategories = function () {
   showLoading("#main-content");
@@ -148,6 +160,14 @@ dc.loadMenuCategories = function () {
     buildAndShowCategoriesHTML);
 };
 
+//action to load about page
+dc.loadAbout = function () {
+  showLoading("#main-content");
+  $ajaxUtils.sendGetRequest(
+    aboutHtmlUrl,
+    buildAndShowAboutHTML,
+    false);
+}
 
 // Load the menu items view
 // 'categoryShort' is a short_name for a category
@@ -157,6 +177,58 @@ dc.loadMenuItems = function (categoryShort) {
     menuItemsUrl + categoryShort + ".json",
     buildAndShowMenuItemsHTML);
 };
+
+
+//builds the HTML for the about page
+function buildAndShowAboutHTML(html) {
+
+  var aboutHtml = html;  //create a copy of the html to work with
+  //get a random rating
+  var rating = getRandomRating();
+
+  console.log("buildAndShowabout, rating was: " + rating);
+  //create the appropriate rating Html/css based on the number
+  // by replacing/inserting properties in html
+
+  for(var currentStar = 1; currentStar <= 5; currentStar++) {
+    console.log("in for loop, current counter: " + currentStar);
+    if(currentStar <= rating){
+      //draw a filled in start for this start number
+      aboutHtml = insertProperty(aboutHtml, 'class' + currentStar, "fa fa-star");
+    } else {
+      //draw a star outline (empty star)
+      aboutHtml = insertProperty(aboutHtml, 'class' + currentStar, "fa fa-star-o");
+    }
+
+  }
+
+  //bonus: put the text of the star rating in the html content:
+  aboutHtml = insertProperty(aboutHtml, 'rating', rating);
+
+
+  insertHtml("#main-content", aboutHtml);
+
+  // // Load about snipped
+  // $ajaxUtils.sendGetRequest(
+  //   categoriesTitleHtml,
+  //   function (categoriesTitleHtml) {
+  //     // Retrieve single category snippet
+  //     $ajaxUtils.sendGetRequest(
+  //       categoryHtml,
+  //       function (categoryHtml) {
+  //         // Switch CSS class active to menu button
+  //         switchMenuToActive();
+
+  //         var categoriesViewHtml =
+  //           buildCategoriesViewHtml(categories,
+  //                                   categoriesTitleHtml,
+  //                                   categoryHtml);
+  //         insertHtml("#main-content", categoriesViewHtml);
+  //       },
+  //       false);
+  //   },
+  //   false);
+}
 
 
 // Builds HTML for the categories page based on the data
