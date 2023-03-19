@@ -4,9 +4,11 @@
 angular.module('ShoppingListCheckOff', [])
 .controller('ToBuyController', ToBuyController)
 .controller('AlreadyBoughtController', AlreadyBoughtController)
-.service('ShoppingListCheckOffService', ShoppingListCheckOffService);
+.service('ShoppingListCheckOffService', ShoppingListCheckOffService)
+.filter('adollar', AngularDollarFilter);
 
 ToBuyController.$inject = ['ShoppingListCheckOffService'];
+// the controller managing the list of things to buy
 function ToBuyController(ShoppingListCheckOffService) {
     var toBuyController = this;
 
@@ -20,6 +22,7 @@ function ToBuyController(ShoppingListCheckOffService) {
 }
 
 AlreadyBoughtController.$inject = ['ShoppingListCheckOffService'];
+//Controller managing list of things already bought
 function AlreadyBoughtController(ShoppingListCheckOffService) {
     var alreadyBoughtController = this;
 
@@ -27,17 +30,18 @@ function AlreadyBoughtController(ShoppingListCheckOffService) {
 
 }
 
+//Service that manages actual data behind controllers
 function ShoppingListCheckOffService() {
     var service = this;
 
 
     //default to list with stuff in it
     var itemsToBuy = [
-        {name: "cookie", quantity: 10},
-        {name: "soda", quantity: 3},
-        {name: "apples", quantity: 15},
-        {name: "pizza", quantity: 5},
-        {name: "chips", quantity: 2}
+        {name: "cookie", quantity: 10, pricePerItem: 1 },
+        {name: "soda", quantity: 3, pricePerItem: 2 },
+        {name: "apples", quantity: 15, pricePerItem: 0.5 },
+        {name: "pizza", quantity: 5, pricePerItem: 15 },
+        {name: "chips", quantity: 2, pricePerItem: .75 }
     ]; 
 
     var itemsBought = [];
@@ -51,9 +55,11 @@ function ShoppingListCheckOffService() {
     };
 
 
+    //transitions item from itemsToBuy list to itemsBought list
     service.buyItem = function (itemIndex) {
         console.log("item index  to buy: ", itemIndex);
         var itemRaw = itemsToBuy.splice(itemIndex, 1);
+        //splice returns an array, in this case array of 1 item
         var item = itemRaw[0];
         console.log ("item is : ", item);
         itemsBought.push(item);
@@ -66,5 +72,12 @@ function ShoppingListCheckOffService() {
 
 }
 
+//filter to show the triple $$$ to signify AngularDollars
+function AngularDollarFilter() {
+    return function (input ) {
+        input = "$$$" + input;
+        return input;
+    };
+}
 
 })();
