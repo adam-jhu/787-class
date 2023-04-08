@@ -14,7 +14,9 @@ function FoundItemsDirective() {
         templateUrl: 'foundList.html',
         scope: {
           list: '<myFoundItems',
-          onRemove: '&'
+          onRemove: '&',
+          searchExecuted: '<',
+         
         }
         // ,
         // controller: FoundItemsDirectiveController,
@@ -40,8 +42,15 @@ function NarrowItDownController(MenuSearchService) {
     var controller = this;
     controller.searchTerm = ""; //default to empty
     controller.found = [];
+    controller.searchExecuted = false;
 
     controller.search = function () {
+        controller.found = []; //reset search results to empty/blank on new search
+        controller.searchExecuted = true;
+        if(!controller.searchTerm ) {
+            console.log("search term was empyt/blank, search ex flag: ", controller.searchExecuted);
+            return; //short circuit empyt search term to no results
+        }
         console.log('controller search value is: ', controller.searchTerm);
         var promise = MenuSearchService.getMatchedMenuItems(controller.searchTerm);
 
@@ -76,6 +85,8 @@ function MenuSearchService($http, ApiURL) {
     var foundItems = []; //empty array
 
     service.getMatchedMenuItems = function (searchTerm) {
+
+        foundItems = []; // empty out found items at start of each search (reset)
 
         console.log("service will search for: ", searchTerm);
 

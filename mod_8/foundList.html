@@ -1,5 +1,6 @@
 <div>
   length: {{ list.length }}
+  search ex: {{ searchExecuted }}
   <!-- length mfi: {{ myFoundItems.length }} -->
 
 <ul>
@@ -8,7 +9,7 @@
 
 
         {{ item.short_name }}, {{ item.name }}, {{ item.description }}
-        <button ng-click="onRemove({index: $index});">Remove Item</button> 
+        <button ng-click="onRemove({index: $index});">Don't want this one!</button> 
     </li>
   </ul>
 <p></p>
@@ -16,4 +17,4 @@
 
 </div>
 
-<div class="errorMessage" ng-if="list.length == 0 ">Nothing found</div>
+<div class="errorMessage" ng-if="(list.length == 0) &&  searchExecuted">Nothing found</div>

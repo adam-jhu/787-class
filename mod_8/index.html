@@ -22,8 +22,14 @@
     </div>
 
     <div style="float:left">
-      <found-items my-found-items="searchController.found" on-remove="searchController.removeItem(index)"></found-items>
+      <found-items 
+        my-found-items="searchController.found" 
+        on-remove="searchController.removeItem(index)"
+        search-executed="searchController.searchExecuted"></found-items>
     </div>
+
+
+<br>searchExecuted: {{ searchController.searchExecuted}}
 
 <!-- TEST no directive
     <p><b>inline list:</b></p>
