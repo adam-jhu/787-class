@@ -1,8 +1,19 @@
 <div>
+  length: {{ list.length }}
+  <!-- length mfi: {{ myFoundItems.length }} -->
+
 <ul>
     <li ng-repeat="item in list">
+
+
+
         {{ item.short_name }}, {{ item.name }}, {{ item.description }}
-      <!-- <button ng-click="list.removeItem($index);">Remove Item</button> -->
+        <button ng-click="onRemove({index: $index});">Remove Item</button> 
     </li>
   </ul>
+<p></p>
+
+
 </div>
+
+<div class="errorMessage" ng-if="list.length == 0 ">Nothing found</div>

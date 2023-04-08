@@ -22,8 +22,22 @@
     </div>
 
     <div style="float:left">
-      <found-items my-found-items="searchController.found" on-remove="...."></found-items>
+      <found-items my-found-items="searchController.found" on-remove="searchController.removeItem(index)"></found-items>
     </div>
+
+<!-- TEST no directive
+    <p><b>inline list:</b></p>
+    <ul>
+      <li ng-repeat="item in searchController.found">
+  
+  
+  
+          FOO: {{ item.short_name }}, {{ item.name }}, {{ item.description }}
+          <button ng-click="list.removeItem($index);">Remove Item</button> 
+      </li>
+    </ul> -->
+
+
   </div>
 
 </body>

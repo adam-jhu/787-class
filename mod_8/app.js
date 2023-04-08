@@ -13,15 +13,25 @@ function FoundItemsDirective() {
     var ddo = {
         templateUrl: 'foundList.html',
         scope: {
-          list: '<myFoundItems'
+          list: '<myFoundItems',
+          onRemove: '&'
         }
+        // ,
+        // controller: FoundItemsDirectiveController,
+        // controllerAs: 'foundItems',
+        // bindToController: true
     };
 
     return ddo;
 }
 
 
+function FoundItemsDirectiveController () {
+    var items = this;
 
+    //items.
+
+}
 
 
 //controller 
@@ -38,11 +48,17 @@ function NarrowItDownController(MenuSearchService) {
         promise.then( function (response){
             controller.found = response; //store returned array of results
             console.log("unwrapping promise, response: ", response);
+            console.log('controller found dat: ', controller.found);
         })
         .catch(function (error){
             console.log("error:", error);
         })
         //console.log("controller.found : ", controller.found);
+    };
+
+    controller.removeItem = function (itemIndex) {
+        console.log('in controller, called remove item on index:', itemIndex);
+        MenuSearchService.removeItem(itemIndex);
     };
 
   
@@ -56,6 +72,9 @@ MenuSearchService.$inject = ['$http', 'ApiURL'];
 function MenuSearchService($http, ApiURL) {
     var service = this;
 
+    //hold the items found
+    var foundItems = []; //empty array
+
     service.getMatchedMenuItems = function (searchTerm) {
 
         console.log("service will search for: ", searchTerm);
@@ -67,7 +86,7 @@ function MenuSearchService($http, ApiURL) {
             console.log("data:", result.data);
             //console.log("data.length:", result.data.length);
 
-            var foundItems = []; //empty array
+            
             //loop through all the menu items, checking for searchTerm
             for(var letterCategory in result.data){
             //for(var letter = 0; letter < result.data.length; letter++ ) {
@@ -88,7 +107,7 @@ function MenuSearchService($http, ApiURL) {
                         //item found
                         console.log("==> FOUND ==> should push found obj:", categoryMenuItems[menuItem]);
                         foundItems.push(categoryMenuItems[menuItem]);
-                        console.log("FOUND FOUND NAME===> item with name: ", categoryMenuItems[menuItem].name);
+                        //console.log("FOUND FOUND NAME===> item with name: ", categoryMenuItems[menuItem].name);
                     }
                 }
             }
@@ -101,6 +120,13 @@ function MenuSearchService($http, ApiURL) {
 
         return response;
     }
+
+
+    service.removeItem = function (itemIndex) {
+        console.log('in service.removeItem, for index: ', itemIndex);
+        foundItems.splice(itemIndex, 1);
+    }
+
 }
 
 })();
