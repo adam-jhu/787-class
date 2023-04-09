@@ -56,8 +56,8 @@ function NarrowItDownController(MenuSearchService) {
 
         promise.then( function (response){
             controller.found = response; //store returned array of results
-            console.log("unwrapping promise, response: ", response);
-            console.log('controller found dat: ', controller.found);
+            //console.log("unwrapping promise, response: ", response);
+            //console.log('controller found dat: ', controller.found);
         })
         .catch(function (error){
             console.log("error:", error);
@@ -76,7 +76,7 @@ function NarrowItDownController(MenuSearchService) {
 }
 
 
-//service to handle menu searching
+//service to handle menu searching against remote data
 MenuSearchService.$inject = ['$http', 'ApiURL'];
 function MenuSearchService($http, ApiURL) {
     var service = this;
@@ -94,7 +94,7 @@ function MenuSearchService($http, ApiURL) {
             method: "GET",
             url: (ApiURL)
         }).then(function (result)  {
-            console.log("data:", result.data);
+            //console.log("data:", result.data);
             //console.log("data.length:", result.data.length);
 
             
@@ -116,9 +116,9 @@ function MenuSearchService($http, ApiURL) {
                     var itemDescription  = categoryMenuItems[menuItem].description
                     if( !(itemDescription.indexOf(searchTerm) === -1) ){
                         //item found
-                        console.log("==> FOUND ==> should push found obj:", categoryMenuItems[menuItem]);
+                        //console.log("==> FOUND ==> should push found obj:", categoryMenuItems[menuItem]);
                         foundItems.push(categoryMenuItems[menuItem]);
-                        //console.log("FOUND FOUND NAME===> item with name: ", categoryMenuItems[menuItem].name);
+                        console.log("FOUND FOUND NAME===> item with name: ", categoryMenuItems[menuItem].name);
                     }
                 }
             }

@@ -1,14 +1,11 @@
 <div>
-  length: {{ list.length }}
-  search ex: {{ searchExecuted }}
+  <!-- length: {{ list.length }}
+  search ex: {{ searchExecuted }} -->
   <!-- length mfi: {{ myFoundItems.length }} -->
 
 <ul>
     <li ng-repeat="item in list">
-
-
-
-        {{ item.short_name }}, {{ item.name }}, {{ item.description }}
+        {{ item.name }}, {{ item.short_name }}, {{ item.description }}
         <button ng-click="onRemove({index: $index});">Don't want this one!</button> 
     </li>
   </ul>
