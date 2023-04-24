@@ -23,8 +23,8 @@
             
 
         // Category list page
-        .state('categoryList', {
-            url: '/category-list',
+        .state('categories', {
+            url: '/categories',
             templateUrl: 'src/menuapp/templates/categoryview.template.html',
             controller: 'CategoryController as categoryController' ,
 
@@ -41,8 +41,8 @@
 
 
         //details of menu items for a particular (selected) category
-        .state('menuDetail', {
-            url: '/menu-detail/{shortname}',
+        .state('items', {
+            url: '/items/{shortname}',
             templateUrl: 'src/menuapp/templates/menudetail.template.html',
             controller: 'ItemsController as itemsController',
             resolve: {

@@ -2,6 +2,6 @@
     <li ng-repeat="item in $ctrl.items">
       <!-- {{ item.short_name }} :  {{ item.name }}
       <br> -->
-      <a ui-sref="menuDetail({shortname: item.short_name})">{{ item.name }}</a>
+      <a ui-sref="items({shortname: item.short_name})">{{ item.name }}</a>
     </li>
   </ul>
