@@ -17,3 +17,8 @@ body {
   .active {
     font-weight: bold;
   }
+
+  .category {
+    font-size: 1.2em;
+    font-weight: bold;
+  }

@@ -1,12 +1,12 @@
 
-IN MENUITEMS.TEPMLATE.HTML
+
 <br>
-<span class="category">Category: {{$ctrl.items.category.name }}</span>
+<span class="category">Menu Category: {{$ctrl.items.category.name }}</span>
 
 <ul>
     <li ng-repeat="item in $ctrl.items.menu_items">
       <!-- {{ item.short_name }} ,  {{ item.name }},  -->
-      {{ item.name }} - {{ item.description}}, Large price: {{ item.price_large }}, Small price: {{ item.price_small }}
+      <b>{{ item.name }}</b>:  {{ item.description}}, Large price: {{ item.price_large }}, Small price: {{ item.price_small }}
       <br>
     </li>
   </ul>
