@@ -1,0 +1,57 @@
+<div class="container">
+    MY INFO HTML LANDING PAGE
+
+    <p><button ng-click="myinfoCtrl.fakeit();">gerenate fake data</button></p>
+
+    userprefs exist: {{ myinfoCtrl.userPrefsExist }}
+
+    <div ng-if="(myinfoCtrl.userPrefsExist)">
+        My User Information:
+        <div class="container">
+            <div class="row">
+                <section  >
+                    <span>First Name: </span>
+                    {{ myinfoCtrl.user.firstname }} <br>
+
+                    <hr class="visible-xs">
+                </section>
+                <section  >
+                    <span>Last Name: </span>
+                    {{ myinfoCtrl.user.lastname }} <br>
+
+                    <hr class="visible-xs">
+                </section>
+                <section  class="">
+                    <span>Email: </span>
+                    {{ myinfoCtrl.user.email }} <br>
+
+                    <hr class="visible-xs">
+                </section>
+                <section  class="">
+                    <span>Phone number: </span>
+                    {{ myinfoCtrl.user.phone }} <br>
+
+                    <hr class="visible-xs">
+                </section>
+                <section  class="">
+                    <span>Favorite dish: </span>
+                    {{ myInfoCtrl.getDish() }} <br>
+
+                    <hr class="visible-xs">
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <div ng-if="(myinfoCtrl.userPrefsExist === false)">user prefs do not exist, <a ui-sref="public.signup">go sign up</a></div>
+
+
+    <p>
+        <p></p>
+        <p></p>
+        user info below/no if show regardelss:
+
+    {{ myinfoCtrl.user }}
+
+
+</div>

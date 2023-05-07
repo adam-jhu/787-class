@@ -1,0 +1,72 @@
+
+
+<!-- <signup-form></signup-form> -->
+
+<br>
+<div class="container">
+    Please sign up to be a favorite customer and receive our newsletter!
+    <br>
+    <form name='signupForm' novalidate>
+
+        <input type="text" name="firstname" placeholder="Enter First Name"
+        class="inputform"
+        ng-model="signupCtrl.user.firstname"
+        minlength="1"
+        required>
+        {{ signupCtrl.user.firstname }}
+
+        <span
+        ng-if="(signupForm.firstname.$error.required && signupForm.firstname.$touched)"
+        >
+        First Name is required
+        </span>
+
+        <br>
+        <input type="text" name="lastname" placeholder="Enter Last Name"
+        ng-model="signupCtrl.user.lastname"
+        class="inputform"
+        required>
+        {{ signupCtrl.user.lastname }}
+
+        <span
+        ng-if="(signupForm.lastname.$error.required && signupForm.lastname.$touched)">
+        Last Name is required
+        </span>
+
+        <br>
+
+        <input type="email" name="email" placeholder="Email"
+            ng-model="signupCtrl.user.email"
+            class="inputform"
+            required>
+            <span ng-if="signupForm.email.$invalid && signupForm.email.$touched">
+            Must be a valid email address in format: handle@domain format
+            </span>
+            <br>
+
+        <input type="text" name="phone" placeholder="Phone ###-###-####"
+            ng-model="signupCtrl.user.phone"
+            class="inputform"
+            pattern="(\d{3})-(\d{3})-(\d{4})">
+            <span ng-if="signupForm.phone.$invalid && signupForm.phone.$touched">
+            Phone must be in the format ###-###-####.
+            </span>
+            <br>
+
+        <button
+            ng-disabled="signupForm.$invalid"
+            ng-click="signupCtrl.submit();">Submit</button>
+
+            <div style="margin-top: 10px;" class="color:black">
+            Form valid? {{ signupForm.$valid }}
+            </div>
+
+            <span ng-if="signupCtrl.signupComplete">Your information has been saved!</span>
+            <p>singupcomplete: {{ signupCtrl.signupComplete }}</p>
+
+    </form>
+
+
+
+
+</div>
