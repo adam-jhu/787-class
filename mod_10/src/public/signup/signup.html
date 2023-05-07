@@ -58,6 +58,7 @@
             class="inputform"
             ng-model="signupCtrl.user.favdish"
             minlength="1"
+            validatedish
             required>
             {{ signupCtrl.user.favdish }}
     
@@ -65,6 +66,11 @@
             ng-if="(signupForm.favdish.$error.required && signupForm.favdish.$touched)"
             >
             Favorite Dish is required
+            </span>
+            <span
+            ng-if="(signupForm.favdish.$error.validatedish && signupForm.favdish.$touched)"
+            >
+            No such menu number exists
             </span>
             <br>
 

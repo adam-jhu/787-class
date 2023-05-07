@@ -41,5 +41,34 @@
         }
     }
     
+
+    //code to add custom validation to the form, demo code copied from:
+    // https://docs.angularjs.org/guide/forms#custom-validation
+    angular.module('public')
+    .directive('validatedish', function() {
+        return {
+          require: 'ngModel',
+          link: function(scope, elm, attrs, ctrl) {
+            ctrl.$validators.validatedish = function(modelValue, viewValue) {
+
+                console.log('model value: ', modelValue);
+                console.log('view value: ',viewValue);
+            //   if (ctrl.$isEmpty(modelValue)) {
+            //     // consider empty models to be valid
+            //     return true;
+            //   }
+      
+              if (viewValue == "L1") {
+                // it is valid
+                return true;
+              }
+      
+              // it is invalid
+              return false;
+            };
+          }
+        };
+      });
+
     
     })();
