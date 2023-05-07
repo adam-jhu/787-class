@@ -22,8 +22,8 @@
             //console.log('firstname: ', $ctrl.firstname);
             //save current user info to the service
 
-            console.log("WARNING: STORING non-user supplied data for testing FIXME");
-            $ctrl.user.favdish = "L1";
+            //console.log("WARNING: STORING non-user supplied data for testing FIXME");
+            //$ctrl.user.favdish = "L1";
 
 
             UserInfoService.user = $ctrl.user;

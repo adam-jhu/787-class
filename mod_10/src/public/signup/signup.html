@@ -53,6 +53,22 @@
             </span>
             <br>
 
+
+        <input type="text" name="favdish" placeholder="Favorite dish (ex: 'L1')"
+            class="inputform"
+            ng-model="signupCtrl.user.favdish"
+            minlength="1"
+            required>
+            {{ signupCtrl.user.favdish }}
+    
+            <span
+            ng-if="(signupForm.favdish.$error.required && signupForm.favdish.$touched)"
+            >
+            Favorite Dish is required
+            </span>
+            <br>
+
+
         <button
             ng-disabled="signupForm.$invalid"
             ng-click="signupCtrl.submit();">Submit</button>
