@@ -7,6 +7,9 @@
     
     
     function UserInfoService() {
+
+        console.log('UserInfoService alive');
+
       var service = this;
     
         
@@ -37,12 +40,22 @@
         }
     
         service.getUserInfo = function () {
-            return service.user;
+            console.log("in service getUserInfo call");
+            if(service.user){
+                console.log(service.user);
+                return service.user;
+            }
+            else 
+            {
+                return null;
+            }
+            
         }
 
 
         service.getTest = function () {
-            return {firstname: "foo"};
+            console.log('userinfoservice.getTest called');
+            return {firstname: "foo", lastname: "bar", phone: "123", email: "foo@bar", favdish: "B27"}.$promise;
         }
 
     }

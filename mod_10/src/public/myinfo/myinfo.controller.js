@@ -4,20 +4,22 @@
     angular.module('public')
     .controller('MyinfoController', MyinfoController);
     
-    MyinfoController.$inject = ['UserInfoService', 'MenuService'];
-    function MyinfoController(UserInfoService, MenuService) {
-    // MyinfoController.$inject = ['userInfo'];
-    // function MyinfoController( userInfo) {
+    // MyinfoController.$inject = ['UserInfoService', 'MenuService', 'userInfo'];
+    // function MyinfoController(UserInfoService, MenuService, userInfo) {
+    MyinfoController.$inject = ['userInfo'];
+    function MyinfoController( userInfo) {
         var $ctrl = this;
 
-        $ctrl.user = UserInfoService.user;
+        //$ctrl.user = UserInfoService.user;
 
         //expose data from injected resolve
-        //$ctrl.userInfo = userInfo;
+        $ctrl.userInfo = userInfo;
 
-        $ctrl.userPrefsExist = UserInfoService.prefsExist();
+        //requires user info service, refactor?
+        //$ctrl.userPrefsExist = UserInfoService.prefsExist();
         
-        //$ctrl.userPrefsExist = ($ctrl.userInfo === null);
+        //check if non-truthy value exists
+        $ctrl.userPrefsExist = ($ctrl.userInfo.firstname);
 
         //convenience method to populate data for testing
         $ctrl.fakeit = function () {

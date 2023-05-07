@@ -51,13 +51,19 @@ function routeConfig ($stateProvider) {
       url: '/myinfo',
       templateUrl: 'src/public/myinfo/myinfo.html',
       controller: 'MyinfoController',
-      controllerAs: 'myinfoCtrl'
-      // ,
-      // resolve: {
-      //   userInfo: function ()  {
-      //     return  {firstname: "me", lastname: "last", phone: "123", email: "foo@bar", favdish: "B2"}
-      //   }
-      // }
+      controllerAs: 'myinfoCtrl',
+      resolve: {
+        //userInfo: ['UserInfoService', function () {
+        userInfo: ['UserInfoService', function (UserInfoService) {
+          console.log('in routes, resolving userInfo prop');
+          return UserInfoService.getUserInfo();
+          //return UserInfoService.getTest();
+          //return UserInfoService.user;
+        }]
+        // userInfo: function ()  {
+        //   return  {firstname: "me", lastname: "last", phone: "123", email: "foo@bar", favdish: "B2"}
+        // }
+      }
       // resolve: {
       //   userInfo: ['UserInfoService', function () {
       //     //return UserInfoService.getUserInfo();
