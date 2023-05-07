@@ -4,9 +4,13 @@
     angular.module('public')
     .controller('SignupController', SignupController);
     
-    SignupController.$inject = ['UserInfoService'];
-    function SignupController(UserInfoService) {
+    SignupController.$inject = ['UserInfoService', 'allItems'];
+    function SignupController(UserInfoService, allItems) {
         var $ctrl = this;
+
+
+        //list of all menu items from teh menu service
+        $ctrl.allItems = allItems;
 
         $ctrl.signupComplete = false;
         //$ctrl.menuCategories = menuCategories;
@@ -26,7 +30,8 @@
             //$ctrl.user.favdish = "L1";
 
 
-            UserInfoService.user = $ctrl.user;
+            //UserInfoService.user = $ctrl.user;
+            UserInfoService.savePrefs($ctrl.user);
 
             console.log("service info: ", UserInfoService.user);
 

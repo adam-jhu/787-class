@@ -45,7 +45,12 @@ function routeConfig ($stateProvider) {
       url: '/signup',
       templateUrl: 'src/public/signup/signup.html',
       controller: 'SignupController',
-      controllerAs: 'signupCtrl'
+      controllerAs: 'signupCtrl',
+      resolve: { 
+        allItems: ['MenuService', function (MenuService) {
+          return MenuService.getAllMenuItems();
+        }]
+      }
     })
     .state('public.myinfo', {
       url: '/myinfo',
@@ -53,23 +58,18 @@ function routeConfig ($stateProvider) {
       controller: 'MyinfoController',
       controllerAs: 'myinfoCtrl',
       resolve: {
-        //userInfo: ['UserInfoService', function () {
         userInfo: ['UserInfoService', function (UserInfoService) {
           console.log('in routes, resolving userInfo prop');
           return UserInfoService.getUserInfo();
-          //return UserInfoService.getTest();
-          //return UserInfoService.user;
+
         }]
-        // userInfo: function ()  {
-        //   return  {firstname: "me", lastname: "last", phone: "123", email: "foo@bar", favdish: "B2"}
-        // }
+        // ,
+        // dish: ['MenuService', function (MenuService) {
+
+        // }]
+
       }
-      // resolve: {
-      //   userInfo: ['UserInfoService', function () {
-      //     //return UserInfoService.getUserInfo();
-      //     return UserInfoService.getTest();
-      //   }]
-      //}
+
     })
     ;
 }

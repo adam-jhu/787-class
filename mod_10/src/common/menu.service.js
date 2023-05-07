@@ -56,6 +56,17 @@ function MenuService($http, ApiPath) {
     }
   };
 
+
+  // get entire tree of menu items
+  service.getAllMenuItems = function () {
+    //https://coursera-jhu-default-rtdb.firebaseio.com/menu_items.json
+    var url = ApiPath + '/menu_items.json';
+    return $http.get(url).then(function (response) {
+      console.log("all menu items: ", response.data);
+      return response.data;
+    });
+  }
+
 }
 
 
