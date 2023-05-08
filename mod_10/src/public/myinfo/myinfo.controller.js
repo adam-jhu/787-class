@@ -20,7 +20,7 @@
         
         //check if non-truthy value exists
         $ctrl.userPrefsExist = function () {
-            console.log("test firstname:", $ctrl.userInfo.firstname);
+            //console.log("test firstname:", $ctrl.userInfo.firstname);
             if ($ctrl.userInfo.firstname){
                 return true;
             }

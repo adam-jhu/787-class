@@ -13,7 +13,7 @@
         ng-model="signupCtrl.user.firstname"
         minlength="1"
         required>
-        {{ signupCtrl.user.firstname }}
+        <!-- {{ signupCtrl.user.firstname }} -->
 
         <span
         ng-if="(signupForm.firstname.$error.required && signupForm.firstname.$touched)"
@@ -26,7 +26,7 @@
         ng-model="signupCtrl.user.lastname"
         class="inputform"
         required>
-        {{ signupCtrl.user.lastname }}
+        <!-- {{ signupCtrl.user.lastname }} -->
 
         <span
         ng-if="(signupForm.lastname.$error.required && signupForm.lastname.$touched)">
@@ -60,7 +60,7 @@
             minlength="1"
             validatedish
             required>
-            {{ signupCtrl.user.favdish }}
+            <!-- {{ signupCtrl.user.favdish }} -->
     
             <span
             ng-if="(signupForm.favdish.$error.required && signupForm.favdish.$touched)"
@@ -76,20 +76,21 @@
 
 
         <button
+            class="inputform"
             ng-disabled="signupForm.$invalid"
             ng-click="signupCtrl.submit();">Submit</button>
 
             <div style="margin-top: 10px;" class="color:black">
-            Form valid? {{ signupForm.$valid }}
+            <!-- Form valid? {{ signupForm.$valid }} -->
             </div>
 
             <span ng-if="signupCtrl.signupComplete">Your information has been saved!</span>
-            <p>singupcomplete: {{ signupCtrl.signupComplete }}</p>
+            <!-- <p>singupcomplete: {{ signupCtrl.signupComplete }}</p> -->
 
 
 
         <p>
-            all items: {{ signupCtrl.allItems | json}}
+            <!-- all items: {{ signupCtrl.allItems | json}} -->
         </p>
 
     </form>
