@@ -1,9 +1,9 @@
 <div class="container">
-    MY INFO HTML LANDING PAGE
+    <!-- MY INFO HTML LANDING PAGE
 
-    <p><button ng-click="myinfoCtrl.fakeit();">gerenate fake data</button></p>
+    <p><button ng-click="myinfoCtrl.fakeit();">gerenate fake data</button></p> -->
 
-    userprefs exist: {{ myinfoCtrl.userPrefsExist(); }}
+    <!-- userprefs exist: {{ myinfoCtrl.userPrefsExist(); }} -->
 
     <div ng-if="(myinfoCtrl.userPrefsExist())">
         My User Information:
@@ -39,13 +39,17 @@
                 </section>
                 <section  class="">
                     <span>Favorite dish: </span>
-                    {{ myinfoCtrl.userInfo.favdish }} <br>
+                    {{ myinfoCtrl.userInfo.favdish }} - 
                  
                     <!-- userInfo: {{ myinfoCtrl.userInfo.favdish }} <br> -->
                      {{ myinfoCtrl.userInfo.name }} <br>
                      {{ myinfoCtrl.userInfo.description }} <br>
 
+                     <img class="img-responsive" width="250" height="150" ng-src="images/menu/{{myinfoCtrl.userInfo.shortname_letter}}/{{myinfoCtrl.userInfo.favdish}}.jpg" alt="{{myinfoCtrl.userInfo.name}}">
+                     <!-- <img class="img-responsive" width="250" height="150" ng-src="images/menu/A/A1.jpg" alt="food"> -->
 
+                     <br>
+                     <!-- imgpath: images/menu/{{myinfoCtrl.userInfo.shortname_letter}}/{{myinfoCtrl.userInfo.favdish}}.jpg -->
 
                     <hr class="visible-xs">
                 </section>
@@ -53,15 +57,15 @@
         </div>
     </div>
 
-    <div ng-if="(!myinfoCtrl.userPrefsExist())">user prefs do not exist, <a ui-sref="public.signup">go sign up</a></div>
+    <div ng-if="(!myinfoCtrl.userPrefsExist())">We do not have your favorite info, please <a ui-sref="public.signup">sign up</a> so we know what you like!</div>
 
 
     <p>
         <p></p>
         <p></p>
-        user info below/no if show regardelss:
+        <!-- user info below/no if show regardelss:
 
-    {{ myinfoCtrl.user }}
+    {{ myinfoCtrl.userInfo }} -->
 
 
 </div>

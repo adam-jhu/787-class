@@ -54,7 +54,11 @@
                 //extract dish info to save in prefs? like title and shortname components
                 $ctrl.user.description = dish.description;
                 $ctrl.user.name = dish.name;
-
+                var favDish = $ctrl.user.favdish;
+                var numPart = favDish.match(/[0-9]+/);
+                var numIndex = favDish.indexOf(numPart);
+                var letterPart = favDish.substring(0, numIndex);
+                $ctrl.user.shortname_letter = letterPart;
             }
             else
             {
