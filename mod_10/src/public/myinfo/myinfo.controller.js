@@ -19,7 +19,16 @@
         //$ctrl.userPrefsExist = UserInfoService.prefsExist();
         
         //check if non-truthy value exists
-        $ctrl.userPrefsExist = ($ctrl.userInfo.firstname);
+        $ctrl.userPrefsExist = function () {
+            console.log("test firstname:", $ctrl.userInfo.firstname);
+            if ($ctrl.userInfo.firstname){
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
         //convenience method to populate data for testing
         $ctrl.fakeit = function () {
