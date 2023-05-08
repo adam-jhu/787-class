@@ -29,6 +29,22 @@
             //console.log("WARNING: STORING non-user supplied data for testing FIXME");
             //$ctrl.user.favdish = "L1";
 
+            //first verify the menu choice exists
+            var favDish = $ctrl.user.favdish;
+            var numPart = favDish.match(/[0-9]+/);
+            var numIndex = favDish.indexOf(numPart);
+            console.log('numeric index: ', numIndex);
+            if(! (numIndex === -1)) {
+                var letterPart = favDish.substring(0, numIndex);
+                console.log("favDish letter: " + letterPart + ", numeric:" + numPart);
+                numPart = numPart - 1; //subtract 1, zero based menu numbering/arry numbering
+                console.log('subtracted number: ', numPart);
+                //check whether this is actually a valid menu item
+                //var single = $ctrl.allItems[letterPart]; //works
+                var single = $ctrl.allItems[letterPart].menu_items[numPart-1];
+                console.log('single', single);
+
+            }
 
             //UserInfoService.user = $ctrl.user;
             UserInfoService.savePrefs($ctrl.user);
@@ -39,6 +55,12 @@
 
             console.log("signup complete: ", $ctrl.signupComplete);
         }
+
+
+    
+
+
+
     }
     
 
@@ -48,20 +70,29 @@
     .directive('validatedish', function() {
         return {
           require: 'ngModel',
+          //controller: SingupController,
           link: function(scope, elm, attrs, ctrl) {
             ctrl.$validators.validatedish = function(modelValue, viewValue) {
 
                 console.log('model value: ', modelValue);
                 console.log('view value: ',viewValue);
-            //   if (ctrl.$isEmpty(modelValue)) {
-            //     // consider empty models to be valid
-            //     return true;
-            //   }
-      
-              if (viewValue == "L1") {
-                // it is valid
-                return true;
-              }
+                if(viewValue) { //don't process if empty/null
+                    //ref: https://reactgo.com/javascript-get-first-number-in-a-string/
+                    var numPart = viewValue.match(/[0-9]+/);
+                    var numIndex = viewValue.indexOf(numPart);
+                    console.log('numeric index: ', numIndex);
+                    if(! (numIndex === -1)) {
+                        var letterPart = viewValue.substring(0, numIndex);
+                        console.log("viewmodel letter: " + letterPart + ", numeric:" + numPart);
+                        //check whether this is actually a valid menu item
+                        //console.log('all items in dir: ', ctrl.allItems);
+                        if (viewValue == "L1") {
+                            // it is valid
+                            return true;
+                          }
+
+                    }
+                }
       
               // it is invalid
               return false;
