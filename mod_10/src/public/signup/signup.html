@@ -58,7 +58,7 @@
             class="inputform"
             ng-model="signupCtrl.user.favdish"
             minlength="1"
-            
+            validatedish
             required>
             {{ signupCtrl.user.favdish }}
     
@@ -89,7 +89,7 @@
 
 
         <p>
-            <!-- all items: {{ signupCtrl.allItems | json}} -->
+            all items: {{ signupCtrl.allItems | json}}
         </p>
 
     </form>
