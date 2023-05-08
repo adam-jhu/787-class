@@ -1,0 +1,50 @@
+My User Information:
+<div class="container">
+    <div class="row">
+        <section  >
+            <span>First Name: </span>
+            {{ $ctrl.myinfo.firstname }} <br>
+            <!-- userInfo: {{ $ctrl.myinfo.firstname }} <br> -->
+
+            <hr class="visible-xs">
+        </section>
+        <section  >
+            <span>Last Name: </span>
+            {{ $ctrl.myinfo.lastname }} <br>
+            <!-- userInfo: {{ $ctrl.myinfo.lastname }} <br> -->
+
+            <hr class="visible-xs">
+        </section>
+        <section  class="">
+            <span>Email: </span>
+            {{ $ctrl.myinfo.email }} <br>
+            <!-- userInfo: {{ $ctrl.myinfo.email }} <br> -->
+
+            <hr class="visible-xs">
+        </section>
+        <section  class="">
+            <span>Phone number: </span>
+            {{ $ctrl.myinfo.phone }} <br>
+            <!-- userInfo: {{ $ctrl.myinfo.phone }} <br> -->
+
+            <hr class="visible-xs">
+        </section>
+        <section  class="">
+            <span>Favorite dish: </span>
+            {{ $ctrl.myinfo.favdish }} - 
+         
+            <!-- userInfo: {{ $ctrl.myinfo.favdish }} <br> -->
+             {{ $ctrl.myinfo.name }} <br>
+            
+
+             <img class="img-responsive" width="250" height="150" ng-src="images/menu/{{$ctrl.myinfo.shortname_letter}}/{{$ctrl.myinfo.favdish}}.jpg" alt="{{$ctrl.myinfo.name}}">
+             <!-- <img class="img-responsive" width="250" height="150" ng-src="images/menu/A/A1.jpg" alt="food"> -->
+
+             <br>
+             {{ $ctrl.myinfo.description }} <br>
+             <!-- imgpath: images/menu/{{$ctrl.myinfo.shortname_letter}}/{{$ctrl.myinfo.favdish}}.jpg -->
+
+            <hr class="visible-xs">
+        </section>
+    </div>
+</div>
